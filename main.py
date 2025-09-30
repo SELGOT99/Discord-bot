@@ -1,6 +1,24 @@
+import os
 import discord
 from discord.ext import commands
+from flask import Flask
+from threading import Thread
 
+# ---------- Flask Server باش Railway ما يوقفش ----------
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "✅ Bot is running!"
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
+
+# ---------- Discord Bot ----------
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
@@ -9,13 +27,13 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 @bot.event
 async def on_ready():
-    print(f"✅ Bot is online as {bot.user}")
+    print(f"🤖 Bot is online as {bot.user}")
 
 @bot.command()
 @commands.has_permissions(administrator=True)
 async def z9dm(ctx):
-    channel_id = 1420070323444781120  # هنا id ديال القناة اللي بغيت تدير ليها tag
-    channel_mention = f"  START ➡️​ <#{channel_id}>"
+    channel_id = 1420070323444781120  # 👈 حط هنا ID ديال القناة
+    channel_mention = f"START ➡️ <#{channel_id}>"
 
     embed = discord.Embed(
         title="ZAN9A ROLEPLAY STATUS",
@@ -24,7 +42,6 @@ async def z9dm(ctx):
     )
     embed.add_field(name="WHITELIST [ ON ✅ ]", value="", inline=False)
     embed.set_image(url="https://i.postimg.cc/WpX5qf6d/standard.gif")
-
 
     sent = 0
     failed = 0
@@ -39,8 +56,7 @@ async def z9dm(ctx):
             failed += 1
 
     await ctx.send(f"✅ الإعلان تْصيفط لـ {sent} عضو.\n❌ ما وصلش لـ {failed} عضو (ربما سادين DM).")
-    
 
+# ---------- Start ----------
+keep_alive()
 bot.run(os.getenv("TOKEN"))  # 👈 token ديالك ديرو فـ Railway ENV
-
-
