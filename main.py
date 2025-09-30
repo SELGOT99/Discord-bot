@@ -40,4 +40,5 @@ async def z9dm(ctx):
 
     await ctx.send(f"✅ الإعلان تْصيفط لـ {sent} عضو.\n❌ ما وصلش لـ {failed} عضو (ربما سادين DM).")
     
-bot.run(os.getenv("MTQyMjYwNjg5OTk5OTY3NDQ4OA.GRNOnI.tM4q1nrvUqRhvfBBhaIOP5OUWAF1RK74KhhNMA")
+bot.run(os.getenv("TOKEN")
+
