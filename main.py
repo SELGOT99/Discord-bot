@@ -4,12 +4,12 @@ from discord.ext import commands
 from flask import Flask
 from threading import Thread
 
-# ---------- Flask server باش يبقى البوت شغال ----------
+# ---------- Flask Server باش Railway ما يوقفش ----------
 app = Flask('')
 
 @app.route('/')
 def home():
-    return "Bot is running!"
+    return "✅ Bot is running!"
 
 def run():
     app.run(host='0.0.0.0', port=8080)
@@ -22,16 +22,17 @@ def keep_alive():
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
+
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 @bot.event
 async def on_ready():
-    print(f"✅ Bot is online as {bot.user}")
+    print(f"🤖 Bot is online as {bot.user}")
 
 @bot.command()
 @commands.has_permissions(administrator=True)
 async def z9dm(ctx):
-    channel_id = 1420070323444781120  # حط هنا ID ديال القناة
+    channel_id = 1420070323444781120  # 👈 حط هنا ID ديال القناة
     channel_mention = f"START ➡️ <#{channel_id}>"
 
     embed = discord.Embed(
@@ -58,4 +59,4 @@ async def z9dm(ctx):
 
 # ---------- Start ----------
 keep_alive()
-bot.run(os.getenv("TOKEN"))
+bot.run(os.getenv("TOKEN"))  # 👈 token ديالك ديرو فـ Railway ENV
