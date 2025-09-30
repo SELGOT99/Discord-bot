@@ -40,7 +40,7 @@ async def z9dm(ctx):
 
     await ctx.send(f"✅ الإعلان تْصيفط لـ {sent} عضو.\n❌ ما وصلش لـ {failed} عضو (ربما سادين DM).")
     
-# ---------- Start ----------
-keep_alive()
+
 bot.run(os.getenv("TOKEN"))  # 👈 token ديالك ديرو فـ Railway ENV
+
 
