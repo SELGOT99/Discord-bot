@@ -58,36 +58,8 @@ async def z9dm(ctx):
 
     await ctx.send(f"✅ الإعلان تْصيفط لـ {sent} عضو.\n❌ ما وصلش لـ {failed} عضو (ربما سادين DM).")
 
-# ---------- Command 2: m (Meeting) ----------
-@bot.command()
-@commands.has_permissions(administrator=True)
-async def m(ctx):
-    channel_id = 1421328656235761725  # 👈 ID ديال قناة الاجتماع
-    channel_mention = f"START ➡️ <#{channel_id}>"
-
-    embed = discord.Embed(
-        title="ZAN9A ROLEPLAY STATUS",
-        description=" ",
-        color=0xff0000
-    )
-    embed.add_field(name="MEETING ON ✅", value="", inline=False)
-    embed.set_image(url="https://i.postimg.cc/wjbcVM0P/a87.png")  # 👈 الصورة ديال الاجتماع
-
-    sent = 0
-    failed = 0
-
-    for member in ctx.guild.members:
-        if member.bot:
-            continue
-        try:
-            await member.send(content=f"{channel_mention}", embed=embed)
-            sent += 1
-        except:
-            failed += 1
-
-    await ctx.send(f"✅ إعلان الاجتماع تْصيفط لـ {sent} عضو.\n❌ ما وصلش لـ {failed} عضو (ربما سادين DM).")
-
 # ---------- Start Bot ----------
 keep_alive()
 bot.run(os.getenv("TOKEN"))  # 👈 حط TOKEN فـ Railway ENV
+
 
