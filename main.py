@@ -87,6 +87,6 @@ async def m(ctx):
     await ctx.send(f"✅ الإعلان تْصيفط لـ {sent} عضو.\n❌ ما وصلش لـ {failed} عضو (ربما سادين DM).")
 # ---------- Start ----------
 keep_alive()
-bot.run("MTQyMjYwNjg5OTk5OTY3NDQ4OA.G3Aton.Z-un8xbeRTuuwbZWaAE4M63f_9YtiTPOuCoh8E")
+bot.run(os.getenv("TOKEN"))
 
 
