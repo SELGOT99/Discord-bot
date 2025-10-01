@@ -60,8 +60,8 @@ async def z9dm(ctx):
 @bot.command()
 @commands.has_permissions(administrator=True)
 async def m(ctx):
-    channel_id = 1419796886340108299  # هنا id ديال القناة اللي بغيت تدير ليها tag
-    channel_mention = f"  START ➡️​ <#{1419796886340108299}>"
+    channel_id = 1421328656235761725  # هنا id ديال القناة اللي بغيت تدير ليها tag
+    channel_mention = f"  START ➡️​ <#{1421328656235761725}>"
 
     embed = discord.Embed(
         title="ZAN9A ROLEPLAY STATUS",
@@ -88,3 +88,4 @@ async def m(ctx):
 # ---------- Start ----------
 keep_alive()
 bot.run(os.getenv("TOKEN")) 
+
