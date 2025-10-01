@@ -1,5 +1,4 @@
 import os
-import asyncio
 import discord
 from discord.ext import commands
 from flask import Flask
@@ -29,15 +28,11 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 @bot.event
 async def on_ready():
     print(f"🤖 Bot is online as {bot.user}")
-    
-    # 👇 Loop باش يخلي البوت شغال وميدخلش فـ "Stopping Container"
-    while True:
-        await asyncio.sleep(3600)  # كل ساعة
 
 @bot.command()
 @commands.has_permissions(administrator=True)
 async def z9dm(ctx):
-    channel_id = 1420070323444781120  # 👈 ID ديال القناة
+    channel_id = 1420070323444781120  # 👈 حط هنا ID ديال القناة
     channel_mention = f"START ➡️ <#{channel_id}>"
 
     embed = discord.Embed(
@@ -62,6 +57,34 @@ async def z9dm(ctx):
 
     await ctx.send(f"✅ الإعلان تْصيفط لـ {sent} عضو.\n❌ ما وصلش لـ {failed} عضو (ربما سادين DM).")
 
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def m(ctx):
+    channel_id = 1419796886340108299  # هنا id ديال القناة اللي بغيت تدير ليها tag
+    channel_mention = f"  START ➡️​ <#{1419796886340108299}>"
+
+    embed = discord.Embed(
+        title="ZAN9A ROLEPLAY STATUS",
+        description="",
+        color=0xff0000
+    )
+    embed.add_field(name="METTING  ON ✅ ", value="", inline=False)
+    embed.set_image(url="https://i.postimg.cc/wjbcVM0P/a87.png")
+
+
+    sent = 0
+    failed = 0
+
+    for member in ctx.guild.members:
+        if member.bot:
+            continue
+        try:
+            await member.send(content=f"{channel_mention}", embed=embed)
+            sent += 1
+        except:
+            failed += 1
+
+    await ctx.send(f"✅ الإعلان تْصيفط لـ {sent} عضو.\n❌ ما وصلش لـ {failed} عضو (ربما سادين DM).")
 # ---------- Start ----------
 keep_alive()
-bot.run(os.getenv("TOKEN"))  # 👈 تأكد باللي token متخزن فـ ENV وسمّيتو "TOKEN"
+bot.run(os.getenv("TOKEN")) 
