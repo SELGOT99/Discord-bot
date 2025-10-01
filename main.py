@@ -1,4 +1,5 @@
 import os
+import asyncio
 import discord
 from discord.ext import commands
 from flask import Flask
@@ -28,11 +29,15 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 @bot.event
 async def on_ready():
     print(f"🤖 Bot is online as {bot.user}")
+    
+    # 👇 Loop باش يخلي البوت شغال وميدخلش فـ "Stopping Container"
+    while True:
+        await asyncio.sleep(3600)  # كل ساعة
 
 @bot.command()
 @commands.has_permissions(administrator=True)
 async def z9dm(ctx):
-    channel_id = 1420070323444781120  # 👈 حط هنا ID ديال القناة
+    channel_id = 1420070323444781120  # 👈 ID ديال القناة
     channel_mention = f"START ➡️ <#{channel_id}>"
 
     embed = discord.Embed(
@@ -57,7 +62,6 @@ async def z9dm(ctx):
 
     await ctx.send(f"✅ الإعلان تْصيفط لـ {sent} عضو.\n❌ ما وصلش لـ {failed} عضو (ربما سادين DM).")
 
-
 # ---------- Start ----------
 keep_alive()
-bot.run(os.getenv("TOKEN")) 
+bot.run(os.getenv("TOKEN"))  # 👈 تأكد باللي token متخزن فـ ENV وسمّيتو "TOKEN"
