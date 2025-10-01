@@ -67,7 +67,7 @@ async def m(ctx):
 
     embed = discord.Embed(
         title="ZAN9A ROLEPLAY STATUS",
-        description="",
+        description=" ",
         color=0xff0000
     )
     embed.add_field(name="MEETING ON ✅", value="", inline=False)
@@ -90,3 +90,4 @@ async def m(ctx):
 # ---------- Start Bot ----------
 keep_alive()
 bot.run(os.getenv("TOKEN"))  # 👈 حط TOKEN فـ Railway ENV
+
